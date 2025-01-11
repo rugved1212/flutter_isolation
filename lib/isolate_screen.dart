@@ -157,6 +157,10 @@ class _IsolateScreenState extends State<IsolateScreen>
             child: Center(
               child: ElevatedButton(
                 onPressed: () {
+
+                  // This is isolate method.
+                  // This prevent us from block the rest of the functions.
+
                   ReceivePort receivePort = ReceivePort();
                   Isolate.spawn(fibonacciFuncOfIsolate, receivePort.sendPort);
 
@@ -166,7 +170,8 @@ class _IsolateScreenState extends State<IsolateScreen>
                     });
                   });
 
-                  // This is the method called without isolation.
+
+                  // This is the normal method called without isolation.
                   // So, when we called this method our UI gets stucks.
                   // To, prevent the above cause we use Flutter Isolate.
 
